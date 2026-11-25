@@ -1,0 +1,28 @@
+---
+interface Props {
+  id?: string;
+  heading: string;
+  variant?: string;
+  headingLevel?: 2 | 3;
+  headingId?: string;
+}
+
+const {
+  id,
+  heading,
+  variant = '',
+  headingLevel = 2,
+  headingId,
+} = Astro.props;
+const sectionClass = ['section', variant].filter(Boolean).join(' ');
+---
+<section id={id} class={sectionClass} aria-labelledby={headingId}>
+  <div class="section__inner">
+    {headingLevel === 2 ? (
+      <h2 id={headingId} class="section__heading">{heading}</h2>
+    ) : (
+      <h3 id={headingId} class="section__heading">{heading}</h3>
+    )}
+    <slot />
+  </div>
+</section>

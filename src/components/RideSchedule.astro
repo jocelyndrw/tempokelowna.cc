@@ -1,0 +1,35 @@
+---
+import schedule from '../data/schedule.json';
+
+function ordinal(day: number) {
+  const remainder = day % 100;
+  const suffix = remainder >= 11 && remainder <= 13
+    ? 'th'
+    : ({ 1: 'st', 2: 'nd', 3: 'rd' } as Record<number, string>)[day % 10] ?? 'th';
+  return `${day}${suffix}`;
+}
+---
+<section class="schedule-panel" aria-labelledby="schedule-title">
+  <div class="section__inner">
+    <h2 id="schedule-title" class="section__heading schedule-heading">{schedule.year} Schedule</h2>
+    <p class="schedule-intro">Thanks for a great {schedule.year} season!</p>
+    <div class="schedule-grid">
+      {schedule.months.map((month) => (
+        <section class="schedule-month" aria-labelledby={`month-${month.number}`}>
+          <h3 id={`month-${month.number}`}>{month.name}</h3>
+          <ul>
+            {month.events.map((event) => {
+              const day = Number(event.date.slice(8, 10));
+              return (
+                <li>
+                  <time datetime={event.date}>{ordinal(day)}</time>
+                  <span>{event.label}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </div>
+</section>
