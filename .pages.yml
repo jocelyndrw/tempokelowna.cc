@@ -1,0 +1,14 @@
+media: public/images
+content:
+- name: sections
+  label: Sections
+  type: collection
+  path: src/content/sections
+  fields:
+  - name: title
+    type: string
+  - name: section
+    type: string
+  - name: body
+    type: rich-text
+    
