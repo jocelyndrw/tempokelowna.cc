@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Cyclepath Kelowna",
+    "tier": "Gold Partner",
+    "href": "https://www.cyclepathkelowna.com/",
+    "logo": "/images/sponsors/cyclepath-kelowna.png",
+    "alt": "Cyclepath Kelowna logo",
+    "width": 373,
+    "height": 178
+  },
+  {
+    "name": "Seth Cowie & Brittany Loney",
+    "tier": "Star Supporters",
+    "href": "https://assurancerealty.c21.ca/",
+    "logo": "/images/sponsors/realty-partners.png",
+    "alt": "Century 21 realtors Seth Cowie and Brittany Loney",
+    "width": 273,
+    "height": 135
+  },
+  {
+    "name": "Kelowna Premium Orthotics",
+    "tier": "Star Supporters",
+    "href": "https://kelownaorthotics.com/",
+    "logo": "/images/sponsors/kelowna-premium-orthotics.png",
+    "alt": "Kelowna Premium Orthotics logo",
+    "width": 166,
+    "height": 202
+  }
+]

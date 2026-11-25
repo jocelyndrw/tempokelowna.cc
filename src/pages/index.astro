@@ -1,0 +1,149 @@
+---
+import { render } from 'astro:content';
+import ContactForm from '../components/ContactForm.astro';
+import ContentSection from '../components/ContentSection.astro';
+import Hero from '../components/Hero.astro';
+import PhotoGallery from '../components/PhotoGallery.astro';
+import RideSchedule from '../components/RideSchedule.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SponsorGrid from '../components/SponsorGrid.astro';
+import galleries from '../data/galleries.json';
+import site from '../data/site.json';
+import { getSections } from '../lib/content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = await getSections();
+const { Content: AboutContent } = await render(sections.about);
+const { Content: BenefitsContent } = await render(sections.benefits);
+const { Content: LicensingContent } = await render(sections.licensing);
+const { Content: JoinContent } = await render(sections['join-us']);
+const { Content: WnrContent } = await render(sections.wnr);
+const { Content: SocialRidesContent } = await render(sections['social-rides']);
+const { Content: ConductContent } = await render(sections.conduct);
+
+const galleryById = Object.fromEntries(galleries.map((gallery) => [gallery.id, gallery]));
+---
+<BaseLayout>
+  <Hero background={site.heroBackground} logo={site.logo} notice={site.seasonNotice} />
+  <main id="main-content" tabindex="-1">
+    <section id="about" class="section section--about" aria-labelledby="about-title">
+      <div class="section__inner">
+        <h1 id="about-title">{sections.about.data.title}</h1>
+        <p class="about-tagline">{site.tagline}</p>
+        <div class="prose about-copy"><AboutContent /></div>
+      </div>
+    </section>
+
+    <ContentSection id="instagram" heading="Follow Us On Instagram" headingId="instagram-title" variant="section--instagram">
+      <a class="instagram-link" href={site.links.instagram} target="_blank" rel="noopener noreferrer">
+        <img src={site.instagramIcon.src} alt={site.instagramIcon.alt} width="100" height="100" loading="lazy" />
+        <span class="visually-hidden">Follow Tempo Cycling Club on Instagram</span>
+      </a>
+    </ContentSection>
+
+    <section class="section section--benefits" aria-labelledby="benefits-title">
+      <div class="section__inner split-layout split-layout--benefits">
+        <div class="split-layout__media">
+          <PhotoGallery gallery={galleryById.benefits} />
+        </div>
+        <div class="split-layout__copy">
+          <h2 id="benefits-title">{sections.benefits.data.title}</h2>
+          <hr class="section-rule" />
+          <div class="prose"><BenefitsContent /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--licensing" aria-labelledby="licensing-title">
+      <div class="section__inner split-layout split-layout--licensing">
+        <div class="split-layout__copy">
+          <h2 id="licensing-title">{sections.licensing.data.title}</h2>
+          <hr class="section-rule" />
+          <div class="prose"><LicensingContent /></div>
+        </div>
+        <div class="split-layout__media">
+          <PhotoGallery gallery={galleryById.licensing} />
+        </div>
+      </div>
+    </section>
+
+    <section id="join-us" class="section section--join" aria-labelledby="join-title">
+      <div class="section__inner split-layout split-layout--join">
+        <div class="split-layout__media">
+          <PhotoGallery gallery={galleryById['join-us']} />
+        </div>
+        <div class="split-layout__copy">
+          <h2 id="join-title">{sections['join-us'].data.title}</h2>
+          <hr class="section-rule" />
+          <div class="prose"><JoinContent /></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-spacer section-spacer--join" aria-hidden="true"></div>
+
+    <section id="our-rides" class="section section--rides" aria-labelledby="rides-title">
+      <div class="section__inner">
+        <h2 id="rides-title" class="section__heading">Our Rides</h2>
+        <div class="rides-grid">
+          <article class="ride-card" aria-labelledby="wnr-title">
+            <img
+              class="ride-card__image"
+              src={site.ridePhotos.wnr.src}
+              alt={site.ridePhotos.wnr.alt}
+              width={site.ridePhotos.wnr.width}
+              height={site.ridePhotos.wnr.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <h3 id="wnr-title">{sections.wnr.data.title}</h3>
+            <div class="prose"><WnrContent /></div>
+          </article>
+          <article class="ride-card" aria-labelledby="social-rides-title">
+            <img
+              class="ride-card__image"
+              src={site.ridePhotos.socialRides.src}
+              alt={site.ridePhotos.socialRides.alt}
+              width={site.ridePhotos.socialRides.width}
+              height={site.ridePhotos.socialRides.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <h3 id="social-rides-title">{sections['social-rides'].data.title}</h3>
+            <div class="prose"><SocialRidesContent /></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <RideSchedule />
+
+    <div class="section-spacer section-spacer--schedule" aria-hidden="true"></div>
+
+    <section
+      id="conduct"
+      class="section section--conduct"
+      style={`--conduct-background: url("${site.conductBackground}")`}
+      aria-labelledby="conduct-title"
+    >
+      <div class="section__inner">
+        <h2 id="conduct-title" class="section__heading">{sections.conduct.data.title}</h2>
+        <div class="prose conduct-copy"><ConductContent /></div>
+      </div>
+    </section>
+
+    <div class="section-spacer section-spacer--conduct" aria-hidden="true"></div>
+
+    <SponsorGrid />
+
+    <div class="section-spacer section-spacer--sponsors" aria-hidden="true"></div>
+
+    <section id="contact" class="section section--contact" aria-labelledby="contact-title">
+      <div class="section__inner contact-inner">
+        <h2 id="contact-title">Get in touch</h2>
+        <ContactForm />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

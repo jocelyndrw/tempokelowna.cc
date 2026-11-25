@@ -1,0 +1,15 @@
+---
+interface Props {
+  background: string;
+  logo: { src: string; alt: string };
+  notice: string;
+}
+
+const { background, logo, notice } = Astro.props;
+---
+<header class="hero" style={`--hero-background: url("${background}")`} aria-label="Tempo Cycling Club">
+  <div class="hero__content">
+    <img class="hero__logo" src={logo.src} alt={logo.alt} width="283" height="283" fetchpriority="high" />
+    <p class="hero__notice">{notice}</p>
+  </div>
+</header>

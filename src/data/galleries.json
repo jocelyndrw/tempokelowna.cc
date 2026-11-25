@@ -1,0 +1,98 @@
+[
+  {
+    "id": "benefits",
+    "title": "Club benefits photos",
+    "intervalMs": 4000,
+    "aspectRatio": "3 / 2",
+    "images": [
+      {
+        "src": "/images/gallery/benefits/01-before-ride.jpg",
+        "alt": "Tempo club cyclists gathered with their bikes before a ride.",
+        "width": 800,
+        "height": 534
+      },
+      {
+        "src": "/images/gallery/benefits/02-club-group.jpg",
+        "alt": "Cyclists in club jerseys stand together with their bikes in a park.",
+        "width": 800,
+        "height": 600
+      },
+      {
+        "src": "/images/gallery/benefits/03-road-peloton.jpg",
+        "alt": "A close group of road cyclists riding together on a race course.",
+        "width": 800,
+        "height": 400
+      },
+      {
+        "src": "/images/gallery/benefits/04-city-ride.jpg",
+        "alt": "Club riders cycling together along a sunlit street.",
+        "width": 800,
+        "height": 534
+      }
+    ]
+  },
+  {
+    "id": "licensing",
+    "title": "Cycling BC licensing photos",
+    "intervalMs": 4000,
+    "aspectRatio": "2 / 3",
+    "images": [
+      {
+        "src": "/images/gallery/licensing/01-road-cyclist.jpg",
+        "alt": "A cyclist in a navy Tempo jersey riding on the road.",
+        "width": 533,
+        "height": 800
+      },
+      {
+        "src": "/images/gallery/licensing/02-gravel-rider.jpg",
+        "alt": "A cyclist in a pink jersey riding a rocky trail through the trees.",
+        "width": 534,
+        "height": 800
+      },
+      {
+        "src": "/images/gallery/licensing/03-forest-road.jpg",
+        "alt": "Cyclists riding a quiet mountain road through a forested valley.",
+        "width": 533,
+        "height": 800
+      },
+      {
+        "src": "/images/gallery/licensing/04-sunlit-ride.jpg",
+        "alt": "A small group of cyclists rides along a sunlit city street.",
+        "width": 640,
+        "height": 800
+      },
+      {
+        "src": "/images/gallery/licensing/05-mountain-road.jpeg",
+        "alt": "Three cyclists ride away on a road through a forested valley.",
+        "width": 533,
+        "height": 800
+      }
+    ]
+  },
+  {
+    "id": "join-us",
+    "title": "Join Tempo photos",
+    "intervalMs": 4000,
+    "aspectRatio": "5 / 4",
+    "images": [
+      {
+        "src": "/images/gallery/join-us/01-after-ride.jpg",
+        "alt": "Tempo riders smiling together after a group ride.",
+        "width": 863,
+        "height": 690
+      },
+      {
+        "src": "/images/gallery/join-us/02-pink-peloton.jpg",
+        "alt": "A line of cyclists in pink jerseys rides together on a tree-lined road.",
+        "width": 968,
+        "height": 774
+      },
+      {
+        "src": "/images/gallery/join-us/03-park-ride.jpg",
+        "alt": "Cyclists in pink jerseys pose together in a park after a ride.",
+        "width": 800,
+        "height": 640
+      }
+    ]
+  }
+]

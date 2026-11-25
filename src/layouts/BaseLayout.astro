@@ -1,0 +1,43 @@
+---
+import site from '../data/site.json';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = site.name,
+  description = site.description,
+  noindex = false,
+} = Astro.props;
+const documentTitle = title === site.name ? site.name : `${title} | ${site.name}`;
+const canonicalUrl = new URL(Astro.url.pathname, site.canonicalUrl).href;
+const logoUrl = new URL(site.logo.src, site.canonicalUrl).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c0f2b" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex, nofollow" /> : <link rel="canonical" href={canonicalUrl} />}
+    {!noindex && <meta property="og:type" content="website" />}
+    {!noindex && <meta property="og:site_name" content={site.name} />}
+    {!noindex && <meta property="og:title" content={documentTitle} />}
+    {!noindex && <meta property="og:description" content={description} />}
+    {!noindex && <meta property="og:url" content={canonicalUrl} />}
+    {!noindex && <meta property="og:image" content={logoUrl} />}
+    <link rel="icon" type="image/png" href={site.logo.src} />
+    <link rel="preload" href={site.fonts.display.file} as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href={site.fonts.body.regular} as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <div class="site-frame"><slot /></div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+---
+import site from '../data/site.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Thanks" description="Thanks for getting in touch with Tempo Cycling Club." noindex={true}>
+  <main id="main-content" class="outcome-page" tabindex="-1">
+    <div class="outcome-card">
+      <img
+        class="outcome-logo"
+        src={site.logo.src}
+        alt={site.logo.alt}
+        width="283"
+        height="283"
+      />
+      <h1>Thanks for getting in touch</h1>
+      <p>Your message has been submitted. The club will respond as soon as possible.</p>
+      <a class="button button--primary" href="/">Back to the home page</a>
+    </div>
+  </main>
+</BaseLayout>

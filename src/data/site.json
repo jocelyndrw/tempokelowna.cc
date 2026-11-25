@@ -1,0 +1,53 @@
+{
+  "name": "Tempo Cycling Club",
+  "description": "Tempo Cycling Club - A Kelowna based cycling club and community organization - We focus on providing a competitive atmosphere and comradery through love of cycling",
+  "canonicalUrl": "https://www.tempokelowna.cc/",
+  "seasonYear": 2026,
+  "seasonNotice": "2026 sEASON CLOSED - check back in the new year!",
+  "tagline": "Ride Fast. Ride Smart. Breathe Later.",
+  "fonts": {
+    "display": {
+      "family": "Bebas",
+      "file": "/fonts/bebas-regular.ttf",
+      "weight": 400
+    },
+    "body": {
+      "family": "Lato",
+      "regular": "/fonts/lato-regular.woff2",
+      "bold": "/fonts/lato-bold.woff2"
+    }
+  },
+  "contactEmail": "directors@tempokelowna.cc",
+  "logo": {
+    "src": "/images/brand/tempo-club-mark.png",
+    "alt": "Tempo Cycling Club"
+  },
+  "instagramIcon": {
+    "src": "/images/brand/instagram.png",
+    "alt": ""
+  },
+  "heroBackground": "/images/backgrounds/home-hero.jpg",
+  "conductBackground": "/images/backgrounds/code-of-conduct.jpg",
+  "ridePhotos": {
+    "wnr": {
+      "src": "/images/rides/wnr-evening-ride.jpg",
+      "alt": "A group of cyclists rides a country road beneath a low evening sun.",
+      "width": 1000,
+      "height": 800
+    },
+    "socialRides": {
+      "src": "/images/rides/social-lookout.jpg",
+      "alt": "Cyclists with their bikes at a rocky mountain lookout.",
+      "width": 1000,
+      "height": 800
+    }
+  },
+  "links": {
+    "instagram": "https://www.instagram.com/tempocycleclub/",
+    "licensing": "https://cyclingbc.net/membership/registration/",
+    "membership": "https://ccnbikes.com/#!/events/tempo-cycling-club-2026",
+    "cyclepath": "https://www.cyclepathkelowna.com/",
+    "realty": "https://assurancerealty.c21.ca/",
+    "orthotics": "https://kelownaorthotics.com/"
+  }
+}

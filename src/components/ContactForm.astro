@@ -1,0 +1,72 @@
+<form
+  class="contact-form"
+  name="contact"
+  method="POST"
+  action="/thanks/"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  data-contact-form
+>
+  <input type="hidden" name="form-name" value="contact" />
+  <p class="honeypot" hidden>
+    <label>Leave this field blank<input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+  </p>
+  <div class="form-row">
+    <div class="form-field">
+      <label for="first-name">First name <span aria-hidden="true">*</span></label>
+      <input id="first-name" name="firstName" type="text" autocomplete="given-name" maxlength="100" required />
+    </div>
+    <div class="form-field">
+      <label for="last-name">Last name <span aria-hidden="true">*</span></label>
+      <input id="last-name" name="lastName" type="text" autocomplete="family-name" maxlength="100" required />
+    </div>
+  </div>
+  <div class="form-field">
+    <label for="email">Email <span aria-hidden="true">*</span></label>
+    <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required />
+  </div>
+  <div class="form-field">
+    <label for="comment">Comment <span aria-hidden="true">*</span></label>
+    <textarea id="comment" name="comment" rows="6" maxlength="10000" required></textarea>
+  </div>
+  <button class="button button--primary" type="submit" data-submit-button>Submit</button>
+  <p class="form-status" data-form-status role="status" aria-live="polite" aria-atomic="true"></p>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+
+  if (form) {
+    const status = form.querySelector<HTMLElement>('[data-form-status]');
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit-button]');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity() || !status || !submit) return;
+
+      status.textContent = '';
+      submit.disabled = true;
+      submit.textContent = 'Sending…';
+
+      const body = new URLSearchParams();
+      for (const [name, value] of new FormData(form).entries()) {
+        if (typeof value === 'string') body.append(name, value);
+      }
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString(),
+        });
+        if (!response.ok) throw new Error(`Form service returned ${response.status}`);
+        window.location.assign('/thanks/');
+      } catch {
+        status.textContent = 'We couldn’t send your message just now. Your details are still here—please try again, or email the club directly.';
+      } finally {
+        submit.disabled = false;
+        submit.textContent = 'Submit';
+      }
+    });
+  }
+</script>
